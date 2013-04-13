@@ -29,3 +29,5 @@ your browser.
 # known issues
  * warc-tools library doesn't handle well large files within archives. Large files can cause MemoryError
 
+# License
+GPLv3
