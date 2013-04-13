@@ -1,0 +1,188 @@
+{
+    "children": [
+        {
+            "path": "Project: Shopping",
+            "duration": 13.25,
+            "user": "Tommy Maintz",
+            "iconCls": "task-folder",
+            "expanded": true,
+            "children": [
+                {
+                    "path": "Housewares",
+                    "duration": 1.25,
+                    "user": "Tommy Maintz",
+                    "iconCls": "task-folder",
+                    "children": [
+                        {
+                            "path": "Kitchen supplies",
+                            "duration": 0.25,
+                            "user": "Tommy Maintz",
+                            "leaf": true,
+                            "iconCls": "task"
+                        }, {
+                            "path": "Groceries",
+                            "duration": .4,
+                            "user": "Tommy Maintz",
+                            "leaf": true,
+                            "iconCls": "task",
+                            "done": true
+                        }, {
+                            "path": "Cleaning supplies",
+                            "duration": .4,
+                            "user": "Tommy Maintz",
+                            "leaf": true,
+                            "iconCls": "task"
+                        }, {
+                            "path": "Office supplies",
+                            "duration": .2,
+                            "user": "Tommy Maintz",
+                            "leaf": true,
+                            "iconCls": "task"
+                        }
+                    ]
+                }, {
+                    "path": "Remodeling",
+                    "duration": 12,
+                    "user": "Tommy Maintz",
+                    "iconCls": "task-folder",
+                    "expanded": true,
+                    "children": [
+                        {
+                            "path": "Retile kitchen",
+                            "duration": 6.5,
+                            "user": "Tommy Maintz",
+                            "leaf": true,
+                            "iconCls": "task"
+                        }, {
+                            "path": "Paint bedroom",
+                            "duration": 2.75,
+                            "user": "Tommy Maintz",
+                            "iconCls": "task-folder",
+                            "children": [
+                                {
+                                    "path": "Ceiling",
+                                    "duration": 1.25,
+                                    "user": "Tommy Maintz",
+                                    "iconCls": "task",
+                                    "leaf": true
+                                }, {
+                                    "path": "Walls",
+                                    "duration": 1.5,
+                                    "user": "Tommy Maintz",
+                                    "iconCls": "task",
+                                    "leaf": true
+                                }
+                            ]
+                        }, {
+                            "path": "Decorate living room",
+                            "duration": 2.75,
+                            "user": "Tommy Maintz",
+                            "leaf": true,
+                            "iconCls": "task",
+                            "done": true
+                        }, {
+                            "path": "Fix lights",
+                            "duration": .75,
+                            "user": "Tommy Maintz",
+                            "leaf": true,
+                            "iconCls": "task",
+                            "done": true
+                        }, {
+                            "path": "Reattach screen door",
+                            "duration": 2,
+                            "user": "Tommy Maintz",
+                            "leaf": true,
+                            "iconCls": "task"
+                        }
+                    ]
+                }
+            ]
+        }, {
+            "path": "Project: Testing",
+            "duration": 2,
+            "user": "Core Team",
+            "iconCls": "task-folder",
+            "children": [
+                {
+                    "path": "Mac OSX",
+                    "duration": 0.75,
+                    "user": "Tommy Maintz",
+                    "iconCls": "task-folder",
+                    "children": [
+                        {
+                            "path": "FireFox",
+                            "duration": 0.25,
+                            "user": "Tommy Maintz",
+                            "iconCls": "task",
+                            "leaf": true
+                        }, {
+                            "path": "Safari",
+                            "duration": 0.25,
+                            "user": "Tommy Maintz",
+                            "iconCls": "task",
+                            "leaf": true
+                        }, {
+                            "path": "Chrome",
+                            "duration": 0.25,
+                            "user": "Tommy Maintz",
+                            "iconCls": "task",
+                            "leaf": true
+                        }
+                    ]
+                }, {
+                    "path": "Windows",
+                    "duration": 3.75,
+                    "user": "Darrell Meyer",
+                    "iconCls": "task-folder",
+                    "children": [
+                        {
+                            "path": "FireFox",
+                            "duration": 0.25,
+                            "user": "Darrell Meyer",
+                            "iconCls": "task",
+                            "leaf": true
+                        }, {
+                            "path": "Safari",
+                            "duration": 0.25,
+                            "user": "Darrell Meyer",
+                            "iconCls": "task",
+                            "leaf": true
+                        }, {
+                            "path": "Chrome",
+                            "duration": 0.25,
+                            "user": "Darrell Meyer",
+                            "iconCls": "task",
+                            "leaf": true
+                        }, {
+                            "path": "Internet Exploder",
+                            "duration": 3,
+                            "user": "Darrell Meyer",
+                            "iconCls": "task",
+                            "leaf": true
+                        }
+                    ]
+                }, {
+                    "path": "Linux",
+                    "duration": 0.5,
+                    "user": "Aaron Conran",
+                    "iconCls": "task-folder",
+                    "children": [
+                        {
+                            "path": "FireFox",
+                            "duration": 0.25,
+                            "user": "Aaron Conran",
+                            "iconCls": "task",
+                            "leaf": true
+                        }, {
+                            "path": "Chrome",
+                            "duration": 0.25,
+                            "user": "Aaron Conran",
+                            "iconCls": "task",
+                            "leaf": true
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
