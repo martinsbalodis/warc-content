@@ -27,5 +27,5 @@ your browser.
  * multiple core support for thos gziped archives
 
 # known issues
- * process hangs at 4 GB mark while processing arhives
+ * warc-tools library doesn't handle well large files within archives. Large files can cause MemoryError
 
