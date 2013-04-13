@@ -5,16 +5,19 @@ import pprint
 class TestUrlTree(TestCase):
     def test_add_url_simple(self):
         urltree = UrlTree()
-        urltree.add_url('/')
+        urltree.add_url('http://example.com/')
         self.assertEquals(urltree.urltree, {
             'childcount': 1,
             'path': 'root',
             'children': [
-                {'path': '/',
+                {'path': 'example.com/',
                  'childcount': 1,
                  'children':
                      [
-                         {'url': '/'}
+                         {
+                             'url': 'http://example.com/',
+                             'leaf': True,
+                         }
                      ]
                 }
             ]})
@@ -22,41 +25,45 @@ class TestUrlTree(TestCase):
 
     def test_add_url_tree(self):
         urltree = UrlTree()
-        urltree.add_url('/')
-        urltree.add_url('/a/')
-        urltree.add_url('/a/b/')
+        urltree.add_url('http://example.com/')
+        urltree.add_url('http://example.com/a/')
+        urltree.add_url('http://example.com/a/b/')
         self.maxDiff = None
-
+        print urltree.urltree
         self.assertEquals(urltree.urltree, {
-            'childcount': 3,
-            'path': 'root',
-            'children': [
+            'path':'root',
+            'childcount':3,
+            'children':[
                 {
-                    'path': '/',
-                    'childcount': 3,
-                    'children': [
+                    'path':'example.com/',
+                    'childcount':3,
+                    'children':[
                         {
-                            'url': '/'
+                            'url':'http://example.com/',
+                            'leaf':True
                         },
                         {
-                            'childcount': 2,
-                            'path': 'a/',
-                            'children': [
+                            'path':'a/',
+                            'childcount':2,
+                            'children':[
                                 {
-                                    'url': '/a/'
+                                    'url':'http://example.com/a/',
+                                    'leaf':True
                                 },
                                 {
-                                    'childcount': 1,
-                                    'path': 'b/',
-                                    'children': [
+                                    'path':'b/',
+                                    'childcount':1,
+                                    'children':[
                                         {
-                                            'url': '/a/b/'
+                                            'url':'http://example.com/a/b/',
+                                            'leaf':True
                                         }
-                                    ],
+                                    ]
                                 }
-                            ],
+                            ]
                         }
-                    ],
+                    ]
                 }
-            ]
+            ],
+
         })

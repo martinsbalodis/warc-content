@@ -1,10 +1,13 @@
 from urlparse import urlsplit
 
 def url_paths(url):
-    if url.path.endswith('/'):
-        return url.path[:-1].split("/")
+    url = urlsplit(url)
+    path = url.netloc+url.path
+
+    if path.endswith('/'):
+        return path[:-1].split("/")
     else:
-        return url.path.split("/")
+        return path.split("/")
 
 class UrlTree(object):
 
@@ -20,7 +23,7 @@ class UrlTree(object):
         }
 
     def add_url(self, url):
-        paths = url_paths(urlsplit(url))
+        paths = url_paths(url)
 
         urltree_skeleton = self.urltree_skeleton
         urltree = self.urltree
