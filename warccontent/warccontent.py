@@ -8,6 +8,7 @@ from optparse import OptionParser
 import pickle
 from urlparse import urlsplit
 import webserver
+import re
 
 from hanzo.warctools import WarcRecord, expand_files
 
@@ -16,10 +17,31 @@ from urltree import UrlTree
 
 parser = OptionParser(usage="%prog [options] warc (warc ...)")
 parser.add_option("-p", "--persist-linkts", dest="persist_links", help="Persist link index")
-parser.set_defaults(persist_links=True)
+parser.add_option("-i", "--ignore-links", dest="ignore_links", help="A file which consists of regular expressions for "
+                                                                    "links to ignore. Use ^$ for expressions")
+parser.set_defaults(persist_links=True, ignore_links=None)
+
+def prepare_link_ignore_re(ignore_links):
+
+    if ignore_links is None:
+        return []
+
+    link_ignore_expressions = []
+    with open(ignore_links) as f:
+        expressions = f.readlines()
+        for expression in expressions:
+            if expression:
+                link_ignore_expressions.append(re.compile(expression.strip()))
+                print "expression: "+ expression.strip()
+
+    return link_ignore_expressions
+
 
 def main(argv):
     (options, input_files) = parser.parse_args(args=argv[1:])
+
+    # prepare regular expressions
+    link_ignore_expressions = prepare_link_ignore_re(options.ignore_links)
 
     print "parsing WARC archives"
 
@@ -60,7 +82,16 @@ def main(argv):
 
     urltree = UrlTree()
     for url in all_urls:
-        urltree.add_url(url)
+        # skip ignorable links
+        skip_addition = False
+        for expression in link_ignore_expressions:
+            if expression.match(url):
+                skip_addition = True
+                break
+        if not skip_addition:
+            urltree.add_url(url)
+
+    print "Total urls: "+str(urltree.childcount)
 
     webserver.run(urltree)
 

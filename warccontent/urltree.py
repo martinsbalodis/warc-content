@@ -22,6 +22,13 @@ class UrlTree(object):
             'children':{},
         }
 
+    @property
+    def childcount(self):
+        childcount = 0
+        for child in self.urltree['children']:
+            childcount+=child['childcount']
+        return childcount
+
     def add_url(self, url):
         paths = url_paths(url)
 
