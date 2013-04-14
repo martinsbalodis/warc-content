@@ -16,10 +16,16 @@ Ext.define('warccontent.view.LinkTree', {
         sortable: true,
         dataIndex: 'path'
     },{
+        xtype: 'templatecolumn',
         text: 'url',
         flex: 2,
         dataIndex: 'url',
-        sortable: true
+        sortable: false,
+        tpl: Ext.create('Ext.XTemplate', '{url:this.formatLink}', {
+            formatLink: function(v) {
+                return '<a href="'+v+'" target="_blank">'+v+'</a>';
+            }
+        })
     },{
         text: 'child count',
         width:100,
@@ -27,3 +33,4 @@ Ext.define('warccontent.view.LinkTree', {
         sortable: true
     }]
 });
+
