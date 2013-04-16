@@ -19,7 +19,10 @@ parser = OptionParser(usage="%prog [options] warc (warc ...)")
 parser.add_option("-p", "--persist-linkts", dest="persist_links", help="Persist link index")
 parser.add_option("-i", "--ignore-links", dest="ignore_links", help="A file which consists of regular expressions for "
                                                                     "links to ignore. Use ^$ for expressions")
-parser.set_defaults(persist_links=True, ignore_links=None)
+parser.add_option("-w", "--web-start", action="store_true", dest="web_start", help="Start a web server")
+parser.add_option("-d", "--dump-links", dest="dump_links", help="A file where to dump parsed links")
+
+parser.set_defaults(persist_links=True, ignore_links=None, web_start=False, dump_links=None)
 
 def prepare_link_ignore_re(ignore_links):
 
@@ -79,21 +82,35 @@ def main(argv):
             fh.close()
             all_urls+= urls
 
+    if options.dump_links is not None:
 
-    urltree = UrlTree()
-    for url in all_urls:
-        # skip ignorable links
-        skip_addition = False
-        for expression in link_ignore_expressions:
-            if expression.match(url):
-                skip_addition = True
-                break
-        if not skip_addition:
-            urltree.add_url(url)
+        f = open(options.dump_links, 'w+')
+        all_urls.sort()
+        for url in all_urls:
+            # skip ignorable links
+            skip_addition = False
+            for expression in link_ignore_expressions:
+                if expression.match(url):
+                    skip_addition = True
+                    break
+            if not skip_addition:
+                f.write(url)
+                f.write('\n')
+        f.close()
 
-    print "Total urls: "+str(urltree.childcount)
-
-    webserver.run(urltree)
+    if options.web_start is not False:
+        urltree = UrlTree()
+        for url in all_urls:
+            # skip ignorable links
+            skip_addition = False
+            for expression in link_ignore_expressions:
+                if expression.match(url):
+                    skip_addition = True
+                    break
+            if not skip_addition:
+                urltree.add_url(url)
+        print "Total urls: "+str(urltree.childcount)
+        webserver.run(urltree)
 
 def run():
     sys.exit(main(sys.argv))
