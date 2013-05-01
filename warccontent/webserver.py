@@ -2,6 +2,8 @@ import os
 import cherrypy
 import json
 
+cherrypy.server.socket_host = '0.0.0.0'
+
 class Links(object):
 
     def __init__(self, urltree):
